@@ -1,0 +1,9 @@
+<form (ngSubmit)="updateStatus()" #statusForm="ngForm">
+  <mat-form-field>
+    <mat-label>Select Status</mat-label>
+    <mat-select [(ngModel)]="selectedStatus" name="status" required>
+      <mat-option *ngFor="let option of statusOptions" [value]="option.value">{{ option.viewValue }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Update Status</button>
+</form>

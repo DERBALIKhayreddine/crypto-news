@@ -1,0 +1,93 @@
+<header class="header_section">
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg custom_nav-container ">
+      <a class="navbar-brand" href="index.html">
+        <span>
+          Trading
+        </span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class=""> </span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav  ">
+          <li class="nav-item active">
+            <a class="nav-link" href="">Home <span class="sr-only"></span></a>
+          </li>
+          <form class="form-inline">
+            <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+<div class="auth-main">
+  <div class="auth-wrapper version-1">
+    <div class="auth-form">
+      <div class="auth-background">
+        <div class="yellow-circle"></div>
+        <div class="red-circle"></div>
+      </div>
+      <div class="main-form">
+        <app-card [showHeader]="false" class="auth-form-card" [padding]="40">
+          <h4 class="text-center m-b-25 f-20 f-w-500">Sign up.</h4>
+          <form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
+            <div class="row text-start">
+              <div class="col-12">
+                <label for="name" class="f-w-500">Enter Your Name</label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                  <input matInput formControlName="name" placeholder="Full Name" />
+                </mat-form-field>
+              </div>
+              <div class="col-12">
+                <label for="email" class="f-w-500">Enter Your Email</label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                  <input matInput formControlName="email" placeholder="Email Address" />
+                  <mat-error *ngIf="registerForm.controls['email'].invalid">
+                    {{ getEmailErrorMessage() }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-12">
+                <label for="password" class="f-w-500">Enter your password</label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                  <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Enter your password" />
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+              <div class="col-12">
+                <label for="confirmPassword" class="f-w-500">Confirm your password</label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                  <input matInput [type]="coHide ? 'password' : 'text'" formControlName="confirmPassword" placeholder="Confirm your password" />
+                  <button mat-icon-button matSuffix (click)="coHide = !coHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="coHide">
+                    <mat-icon>{{ coHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="check-me">
+              <mat-checkbox class="float-start" formControlName="terms" color="primary">I agree to all the Terms & Conditions</mat-checkbox>
+            </div>
+            <div class="grid">
+              <button mat-flat-button color="primary" style="color: whitesmoke;" class="b-rad-20 m-t-15" type="submit">Register</button>
+            </div>
+            <div class="check-me m-t-15">
+              <h6 class="f-w-400 text-muted m-b-0">Already have an Account?</h6>
+              <a class="text-primary-500" [routerLink]="['/auth/login']">Login Account</a>
+            </div>
+          </form>
+        </app-card>
+      </div>
+    </div>
+  </div>
+</div>

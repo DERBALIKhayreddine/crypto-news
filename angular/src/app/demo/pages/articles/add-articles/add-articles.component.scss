@@ -1,0 +1,25 @@
+.article-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 10px; // Adjust spacing between columns
+}
+
+.content-field {
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}

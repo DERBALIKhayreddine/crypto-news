@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Update User Status</h2>
+<div mat-dialog-content>
+  <p>Do you want to set the status of {{ data.user.name }} to:</p>
+  <mat-radio-group [(ngModel)]="status">
+    <mat-radio-button [value]="'true'">Active</mat-radio-button>
+    <mat-radio-button [value]="'false'">Inactive</mat-radio-button>
+  </mat-radio-group>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="status" cdkFocusInitial>Confirm</button>
+</div>

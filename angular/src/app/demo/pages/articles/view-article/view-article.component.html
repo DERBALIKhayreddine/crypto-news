@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>{{ article.title }}</h2>
+<mat-dialog-content>
+  <p><strong>ID:</strong> {{ article.id }}</p>
+  <p><strong>Category ID:</strong> {{ article.category_id }}</p>
+  <p><strong>Publication Date:</strong> {{ article.publication_date | date }}</p>
+  <p><strong>Status:</strong> {{ article.status }}</p>
+  <p><strong>Content:</strong> {{ article.content }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

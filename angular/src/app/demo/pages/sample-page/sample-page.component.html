@@ -1,0 +1,11 @@
+<div class="row p-t-25">
+  <div class="col-12">
+    <ng-container *ngFor="let article of articles">
+      <app-card [cardTitle]="article.title">
+        <p class="category">{{ getCategoryName(article.category_id) }}</p> <!-- Category name -->
+        <p class="date">{{ formatDate(article.publication_date) }}</p> <!-- Date and time -->
+        <p class="content">{{ article.content }}</p> <!-- Content -->
+      </app-card>
+    </ng-container>
+  </div>
+</div>

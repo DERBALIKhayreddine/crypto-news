@@ -1,0 +1,110 @@
+
+<div *ngIf="isAdmin">
+  <h2>Add New Article</h2>
+  <form [formGroup]="articleForm" (ngSubmit)="addArticle()" class="article-form">
+    <div class="form-row">
+      <div class="form-column">
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" placeholder="Title" required>
+          <mat-error *ngIf="articleForm?.get('title')?.invalid">Title is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="category_id" placeholder="Select Category" required>
+            <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="articleForm?.get('category_id')?.invalid">Category is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-column">
+        <mat-form-field>
+          <mat-label>Publication Date</mat-label>
+          <input matInput formControlName="publication_date" placeholder="Publication Date" type="date" required>
+          <mat-error *ngIf="articleForm?.get('publication_date')?.invalid">Publication Date is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status" required>
+            <mat-option value="draft">Draft</mat-option>
+            <mat-option value="published">Published</mat-option>
+            <mat-option value="archived">Archived</mat-option>
+            <mat-option value="complete">Complete</mat-option>
+          </mat-select>
+          <mat-error *ngIf="articleForm?.get('status')?.invalid">Status is required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field class="content-field">
+        <mat-label>Content</mat-label>
+        <textarea matInput formControlName="content" placeholder="Content" required></textarea>
+        <mat-error *ngIf="articleForm?.get('content')?.invalid">Content is required</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="buttons">
+      <button mat-button color="primary" type="submit" [disabled]="articleForm.invalid">Add</button>
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
+<!--else not admin-->
+<div *ngIf="!isAdmin">
+  <h2>Add New Article</h2>
+<form [formGroup]="articleForm" (ngSubmit)="addArticle()" class="article-form">
+  <div class="form-row">
+    <div class="form-column">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" placeholder="Title" required>
+        <mat-error *ngIf="articleForm?.get('title')?.invalid">Title is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category_id" placeholder="Select Category" required>
+          <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="articleForm?.get('category_id')?.invalid">Category is required</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-column">
+      <mat-form-field>
+        <mat-label>Publication Date</mat-label>
+        <input matInput formControlName="publication_date" placeholder="Publication Date" type="date" required>
+        <mat-error *ngIf="articleForm?.get('publication_date')?.invalid">Publication Date is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option value="draft">Draft</mat-option>
+          <mat-option value="complete">Complete</mat-option>
+        </mat-select>
+        <mat-error *ngIf="articleForm?.get('status')?.invalid">Status is required</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field class="content-field">
+      <mat-label>Content</mat-label>
+      <textarea matInput formControlName="content" placeholder="Content" required></textarea>
+      <mat-error *ngIf="articleForm?.get('content')?.invalid">Content is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="buttons">
+    <button mat-button color="primary" type="submit" [disabled]="articleForm.invalid">Add</button>
+    <button mat-button type="button" (click)="cancel()">Cancel</button>
+  </div>
+</form>
+
+</div>
+

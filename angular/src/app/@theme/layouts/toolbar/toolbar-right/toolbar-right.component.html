@@ -1,0 +1,47 @@
+<div class="header-button">
+  <button mat-button [matMenuTriggerFor]="Notification" aria-label="mode" class="header-item">
+    <a href="javascript:" class="pc-head-link badge-on-button" matBadge="4" matBadgeColor="primary" matBadgeOverlap="false">
+      <svg class="pc-icon">
+        <use xlink:href="assets/fonts/custom-icon.svg#custom-notification"></use>
+      </svg>
+    </a>
+  </button>
+  <button mat-button [matMenuTriggerFor]="user" aria-label="mode" class="header-item">
+    <a class="pc-head-link">
+      <img src="assets/images/user/avatar-2.jpg" alt="user-image" class="user-avatar" />
+    </a>
+  </button>
+  <mat-menu #Notification="matMenu" xPosition="before" class="dropdown-notification">
+    <ng-scrollbar style="height: calc(20vh - 20px)" visibility="hover">
+      <div class="dropdown-body">
+      </div>
+    </ng-scrollbar>
+  </mat-menu>
+  <mat-menu #user="matMenu" xPosition="before" class="dropdown-user-profile">
+    <div class="dropdown-header flex align-item-center justify-content-between">
+      <h5 class="user-title">Profile</h5>
+    </div>
+    <ng-scrollbar style="height: calc(20vh - 20px)" visibility="hover">
+      <div class="dropdown-body">
+        <div class="flex m-b-5">
+          <div class="topic-icon">
+            <img src="assets/images/user/avatar-2.jpg" alt="user-images" class="user-avatar" />
+          </div>
+          <div class="topic-description m-l-15">
+            <h6 class="user-name">{{ userEmail }} 🖖</h6>
+          </div>
+        </div>
+        <div class="grid m-b-15">
+          <button mat-flat-button class="user-logout" (click)="logout()">
+            <div class="flex-inline align-item-center">
+              <svg class="pc-icon m-r-10">
+                <use xlink:href="assets/fonts/custom-icon.svg#custom-logout-1-outline"></use>
+              </svg>
+              Logout
+            </div>
+          </button>
+        </div>
+      </div>
+    </ng-scrollbar>
+  </mat-menu>
+</div>

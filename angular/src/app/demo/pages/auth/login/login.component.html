@@ -1,0 +1,73 @@
+<header class="header_section">
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg custom_nav-container ">
+      <a class="navbar-brand" href="index.html">
+        <span>
+          Trading
+        </span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class=""> </span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav  ">
+          <li class="nav-item active">
+            <a class="nav-link" href="">Home <span class="sr-only"></span></a>
+          </li>
+          <form class="form-inline">
+            <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="auth-main">
+  <div class="auth-wrapper version-1">
+    <div class="auth-form">
+      <div class="auth-background">
+        <div class="yellow-circle"></div>
+        <div class="red-circle"></div>
+      </div>
+      <div class="main-form">
+        <app-card [showHeader]="false" class="auth-form-card" [padding]="40">
+          <h4 class="text-center m-b-25 f-20 f-w-500">Login With Your Email</h4>
+          <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+            <div class="text-start">
+              <label for="email" class="f-w-500">Enter Your Email</label>
+              <mat-form-field appearance="outline" class="w-100 m-t-5">
+                <input matInput formControlName="email" required />
+                <mat-error *ngIf="loginForm.controls['email'].invalid">
+                  {{ getErrorMessage() }}
+                </mat-error>
+              </mat-form-field>
+              <label for="password" class="f-w-500">Enter your password</label>
+              <mat-form-field appearance="outline" class="w-100 m-t-5">
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+            <div class="check-me">
+              <mat-checkbox class="float-start" color="primary">Remember me?</mat-checkbox>
+              <a class="f-w-400 f-14 text-primary-500 m-b-0" href="javascript:">Forgot Password</a>
+            </div>
+            <div class="grid">
+              <button mat-flat-button color="primary" style="color: white;" class="b-rad-20 m-t-15" type="submit">Login</button>
+            </div>
+            <div class="check-me m-t-20">
+              <h6 class="f-w-400 text-muted m-b-0">Don't have an Account?</h6>
+              <a [routerLink]="['/auth/register']" class="text-primary-500">Create Account</a>
+            </div>
+          </form>
+        </app-card>
+      </div>
+    </div>
+  </div>
+</div>

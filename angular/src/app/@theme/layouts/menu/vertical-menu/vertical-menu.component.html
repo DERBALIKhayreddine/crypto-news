@@ -1,0 +1,17 @@
+<ng-scrollbar style="height: calc(100vh - 88px)" visibility="hover">
+  <div class="navbar-content">
+    <ul class="nav coded-inner-navbar" (click)="fireOutClick()" aria-hidden="true">
+      @for (item of menus; track item) {
+        @if (item.type === 'group') {
+          <app-menu-group-vertical [item]="item"></app-menu-group-vertical>
+        }
+        @if (item.type === 'collapse') {
+          <app-menu-collapse [item]="item"></app-menu-collapse>
+        }
+        @if (item.type === 'item') {
+          <app-menu-item [item]="item"></app-menu-item>
+        }
+      }
+    </ul>
+  </div>
+</ng-scrollbar>

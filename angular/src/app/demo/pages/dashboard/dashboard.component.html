@@ -1,0 +1,131 @@
+
+
+<div *ngIf="isAdmin">
+  <div class="row widget-chart p-t-25 flex-container">
+    <div class="col-lg-9 flex-row">
+      <div class="col-md-6 col-xxl-3 card-item">
+        <app-card [showHeader]="false">
+          <div class="flex align-item-center">
+            <div class="flex-shrink-0">
+              <div class="avatar avatar-s bg-primary-50 text-primary-500">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"></svg>
+              </div>
+            </div>
+            <div class="flex-grow-1 card-head">
+              <h5 class="m-b-0 f-w-600">Active and Inactive Users</h5>
+            </div>
+          </div>
+          <div class="chart-body">
+            <div class="m-t-15 row align-item-center">
+              <apx-chart [series]="chartData.series" [chart]="chartData.chart" [labels]="chartData.labels"></apx-chart>
+            </div>
+          </div>
+        </app-card>
+      </div>
+      <div class="col-md-6 col-xxl-3 card-item">
+        <div class="flex-grow-1 card-head">
+          <h5 class="m-b-0 f-w-600">Categories and Articles </h5>
+        </div>
+        <div class="chart-body">
+          <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+            [yaxis]="chartOptions.yaxis" [plotOptions]="chartOptions.plotOptions" [dataLabels]="chartOptions.dataLabels"
+            [fill]="chartOptions.fill"></apx-chart>
+        </div>
+        <div class="chart-body">
+          <apx-chart [series]="brushChartOptions.series" [chart]="brushChartOptions.chart" [xaxis]="brushChartOptions.xaxis"
+            [plotOptions]="brushChartOptions.plotOptions" [dataLabels]="brushChartOptions.dataLabels"></apx-chart>
+        </div>
+      </div>
+    </div>
+    <div>
+      <app-card [showHeader]="false">
+        <div class="flex align-item-center">
+          <div class="flex-shrink-0">
+            <div class="avatar avatar-s bg-primary-50 text-primary-500">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- SVG paths -->
+              </svg>
+            </div>
+          </div>
+          <div class="flex-grow-1 card-head">
+            <h5 class="m-b-0 f-w-600">Trading Crypto</h5>
+          </div>
+        </div>
+        <div class="chart-body">
+          <div class="m-t-15 row align-item-center">
+            <div class="carousel" *ngIf="bannerData.length > 0;">
+              <div class="carousel-inner">
+                <div class="carousel-item" *ngFor="let coin of bannerData">
+                  <div class="card">
+                    <img [src]="coin.image" alt="{{coin.name}}" class="card-image">
+                    <div class="card-content">
+                      <h2>{{coin.name}}</h2>
+                      <p>{{coin.symbol | uppercase}}</p>
+                      <p>${{coin.current_price | number}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </app-card>
+    </div>
+    <div>
+      <app-manage-categories></app-manage-categories>
+    </div>
+    <div>
+      <h2>Users</h2>
+      <app-userslist></app-userslist>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isAdmin">
+  <ng-container>
+    <app-card [showHeader]="false">
+      <div class="flex align-item-center">
+        <div class="flex-shrink-0">
+          <div class="avatar avatar-s bg-primary-50 text-primary-500">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- SVG paths -->
+            </svg>
+          </div>
+        </div>
+        <div class="flex-grow-1 card-head">
+          <h5 class="m-b-0 f-w-600">Trading Crypto</h5>
+        </div>
+      </div>
+      <div class="chart-body">
+        <div class="m-t-15 row align-item-center">
+          <div class="carousel" *ngIf="bannerData.length > 0;">
+            <div class="carousel-inner">
+              <div class="carousel-item" *ngFor="let coin of bannerData">
+                <div class="card">
+                  <img [src]="coin.image" alt="{{coin.name}}" class="card-image">
+                  <div class="card-content">
+                    <h2>{{coin.name}}</h2>
+                    <p>{{coin.symbol | uppercase}}</p>
+                    <p>$ {{coin.current_price | number}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </app-card>
+  </ng-container>
+</div>
+
+
+
+
+
+
+
+
+
+<!--
+
+-->

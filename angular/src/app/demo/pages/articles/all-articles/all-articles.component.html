@@ -1,0 +1,124 @@
+<div *ngIf="isAdmin">
+  <div class="mat-elevation-z8">
+
+    <button mat-raised-button color="primary" (click)="openAddArticleDialog()" style="color: white;">Add New
+      Article</button>
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Title">
+    </mat-form-field>
+
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <!-- Title Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+        <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+      </ng-container>
+
+      <!-- Category ID Column -->
+      <ng-container matColumnDef="category_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Category ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.category_id }}</td>
+      </ng-container>
+
+      <!-- Publication Date Column -->
+      <ng-container matColumnDef="publication_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Publication Date</th>
+        <td mat-cell *matCellDef="let element">{{ element.publication_date | date }}</td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-button (click)="viewArticleById(element.id)">View</button>
+          <!-- Add this to your existing HTML template -->
+          <button mat-button (click)="updateArticleStatus(element.id, element.status)">Update</button>
+          <button mat-button (click)="deleteArticle(element.id)">Delete</button>
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+
+<!--else other not admin-->
+<div *ngIf="!isAdmin">
+  <div class="mat-elevation-z8">
+
+    <button mat-raised-button color="primary" (click)="openAddArticleDialog()" style="color: white;">Add New
+      Article</button>
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Title">
+    </mat-form-field>
+
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <!-- Title Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+        <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+      </ng-container>
+
+      <!-- Category ID Column -->
+      <ng-container matColumnDef="category_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Category ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.category_id }}</td>
+      </ng-container>
+
+      <!-- Publication Date Column -->
+      <ng-container matColumnDef="publication_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Publication Date</th>
+        <td mat-cell *matCellDef="let element">{{ element.publication_date | date }}</td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-button (click)="viewArticleById(element.id)">View</button>
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+
+</div>
